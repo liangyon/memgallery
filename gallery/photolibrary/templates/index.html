@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="text-center">Gallery</h1>
+{% if user.is_authenticated %}
+<h3>Hello {{ user }}!!</h3>
+<li>Images: {{ num_images }}</li>
+
+{% for i in gallery %}
+<img src="{{ i.img.url }}" width="500px"/>
+{% endfor %}
+
+<a href="{% url 'upload_to_user' %}">Upload Image </a>
+
+
+{% else %}
+<p>You are not logged in</p>
+{% endif %}
+{% endblock %}

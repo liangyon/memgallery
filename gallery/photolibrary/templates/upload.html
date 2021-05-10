@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="text-center">Gallery</h1>
+{% if user.is_authenticated %}
+<h3>Upload</h3>
+<form action="{% url 'upload_to_user'%}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload Images</button>
+</form>
+{% else %}
+<p>You are not logged in</p>
+{% endif %}
+{% endblock %}
